@@ -1,16 +1,19 @@
 const validationInputEl = document.querySelector('#validation-input');
 
-validationInputEl.addEventListener('blur', () => {
-  const lengthOfWord = validationInputEl.getAttribute('data-length');
+validationInputEl.addEventListener('blur', (event) => {
+  const {dataset, value, classList} = event.target;
+  const lengthOfWord = dataset.length;
   
-  if (validationInputEl.value.length === Number(lengthOfWord)) {
-    validationInputEl.classList.remove('invalid');
-    validationInputEl.classList.add('valid');
+  if (value.length === Number(lengthOfWord)) {
+    classList.remove('invalid');
+    classList.add('valid');
   } else {
-    validationInputEl.classList.remove('valid');
-    validationInputEl.classList.add('invalid');
+    classList.remove('valid');
+    classList.add('invalid');
   }
 });
+
+
 
 
 // Для добавления стилей, используй CSS-классы valid и invalid, которые мы уже добавили в исходные файлы задания.
